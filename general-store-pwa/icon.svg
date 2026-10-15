@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="#174b3b"/><path d="M112 210h288l-22 190H134z" fill="#fff"/><path d="M166 216v-45a90 90 0 0 1 180 0v45" fill="none" stroke="#c9f2d9" stroke-width="28" stroke-linecap="round"/><path d="M183 273h146M183 322h104" stroke="#174b3b" stroke-width="20" stroke-linecap="round"/><circle cx="365" cy="144" r="45" fill="#f3c96b"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="General store storefront logo">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b5be8"/><stop offset="1" stop-color="#4437bd"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8ce8ff"/><stop offset="1" stop-color="#238bc5"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe58a"/><stop offset="1" stop-color="#f6a91b"/></linearGradient>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<ellipse cx="257" cy="438" rx="166" ry="19" fill="#241a78" opacity=".22"/>
+<path d="M112 221 145 145h222l33 76v205H112z" fill="#fff7e8"/>
+<path d="M143 220h226v206H143z" fill="#f9e6c9"/>
+<path d="M165 273h93v153h-93z" fill="#1974a8"/>
+<path d="M176 284h70v130h-70z" fill="url(#glass)"/>
+<path d="M211 284v130" stroke="#d5f8ff" stroke-width="7"/>
+<circle cx="235" cy="351" r="5" fill="#ffe58a"/>
+<path d="M278 278h68v70h-68z" fill="#fff"/>
+<path d="M286 286h52v54h-52z" fill="#17614b"/>
+<g fill="#ffd65c"><rect x="291" y="297" width="11" height="26" rx="3"/><rect x="307" y="292" width="12" height="31" rx="3"/><rect x="324" y="300" width="9" height="23" rx="3"/></g>
+<path d="M272 359h83v67h-83z" fill="url(#gold)"/><path d="M284 370h59v44h-59z" fill="#f8bc38"/>
+<path d="M98 221h316l-22 48H120z" fill="#fff"/>
+<path d="M98 221h54l-20 48h-34zM206 221h54l-5 48h-54zM314 221h54l20 48h-54z" fill="#f04457"/>
+<path d="M152 221h54l-5 48h-54zM260 221h54l5 48h-54zM368 221h46l-22 48h-44z" fill="#fff"/>
+<path d="M98 221h316l-7-25H109z" fill="#ffb7bd"/>
+<path d="M123 188q0-13 13-13h240q13 0 13 13v18H123z" fill="url(#gold)" stroke="#fff0b0" stroke-width="5"/>
+<path d="M98 269h54v12q0 20-27 20t-27-20zM206 269h54v12q0 20-27 20t-27-20zM314 269h54v12q0 20-27 20t-27-20z" fill="#f04457"/>
+<path d="M152 269h54v12q0 20-27 20t-27-20zM260 269h54v12q0 20-27 20t-27-20zM368 269h46v12q0 20-23 20t-23-20z" fill="#fff"/>
+<path d="M112 426h288" stroke="#d7b98e" stroke-width="10" stroke-linecap="round"/>
+</svg>
