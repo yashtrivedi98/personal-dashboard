@@ -1,4 +1,4 @@
-const CACHE='general-store-pwa-v2';
+const CACHE='general-store-pwa-v3';
 const SUPABASE_SCRIPT='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
 const CORE=['./','./index.html','./config.js','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await cache.addAll(CORE);try{const response=await fetch(SUPABASE_SCRIPT,{mode:'cors'});if(response.ok)await cache.put(SUPABASE_SCRIPT,response.clone())}catch(e){}await self.skipWaiting()})())});
