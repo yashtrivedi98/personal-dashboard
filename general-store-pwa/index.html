@@ -37,7 +37,9 @@ function authMsg(text){$('authMsg').textContent=text}
 function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function isManager(){return role==='owner'||role==='family'}
 function fmtDate(v){if(!v)return '—';const d=new Date(v+'T12:00:00');return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}
-function paymentTotal(p){return payments.filter(x=>x.purchase_id===p.id&&x.status==='approved').reduce((s,x)=>s+Number(x.amount),0)}\nfunction balanceDue(p){return Math.max(0,Number(p.total_amount)-Number(p.paid_amount)-paymentTotal(p))}\nfunction statusPill(s){return '<span class="pill '+escapeHtml(s)+'">'+escapeHtml(s==='approved'?'Approved':s==='pending'?'Awaiting approval':'Rejected')+'</span>'}
+function paymentTotal(p){return payments.filter(x=>x.purchase_id===p.id&&x.status==='approved').reduce((s,x)=>s+Number(x.amount),0)}
+function balanceDue(p){return Math.max(0,Number(p.total_amount)-Number(p.paid_amount)-paymentTotal(p))}
+function statusPill(s){return '<span class="pill '+escapeHtml(s)+'">'+escapeHtml(s==='approved'?'Approved':s==='pending'?'Awaiting approval':'Rejected')+'</span>'}
 function configReady(){return window.STORE_CONFIG&&/^https:\/\//.test(window.STORE_CONFIG.supabaseUrl||'')&&!String(window.STORE_CONFIG.supabaseUrl).includes('YOUR_')&&window.STORE_CONFIG.supabasePublishableKey&&!String(window.STORE_CONFIG.supabasePublishableKey).includes('YOUR_')}
 function showAuth(){ $('appScreen').classList.add('hidden');$('authScreen').classList.remove('hidden') }
 function showApp(){ $('authScreen').classList.add('hidden');$('appScreen').classList.remove('hidden') }
