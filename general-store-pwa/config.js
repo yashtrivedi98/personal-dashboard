@@ -1,6 +1,6 @@
-// Fill these two values from your DEDICATED General Store Supabase project.
-// Never use a service_role or secret key in this browser file.
+// Browser-safe Supabase settings for the dedicated General Store Manager project.
+// Publishable keys are intended for client apps; never add a service_role/secret key here.
 window.STORE_CONFIG = {
-  supabaseUrl: "YOUR_GENERAL_STORE_SUPABASE_URL",
-  supabasePublishableKey: "YOUR_GENERAL_STORE_SUPABASE_PUBLISHABLE_KEY"
+  supabaseUrl: "https://yltwspgvgjakcuxnkgdp.supabase.co",
+  supabasePublishableKey: "sb_publishable_1IqgBlbyVaFcQmo3S4V4Ow_W7NXR8h3"
 };
