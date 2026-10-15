@@ -2,8 +2,14 @@
 
 This folder is a separate app within the repository. It must use a **dedicated Supabase project**. Do not point it at the Couple Expense Manager project: that project contains private personal records.
 
-## 1. Create a dedicated Supabase project
-Create a new project in the Supabase organization you choose. Use the closest suitable region for your users (India region if available). Keep the database password private.
+## 1. Dedicated Supabase project (created)
+- Project: `general-store-manager`
+- Project ref: `yltwspgvgjakcuxnkgdp`
+- Region: Mumbai, India (`ap-south-1`)
+- Project fee quoted by Supabase at creation: `$0/month`
+- Project URL: `https://yltwspgvgjakcuxnkgdp.supabase.co`
+
+The two schema migrations have been applied successfully. Keep the database password private. The browser config uses only the project's publishable key; never put a `service_role` key or secret key in browser code.
 
 ## 2. Apply the database schema
 In the new project's SQL Editor, run both SQL files in order:
@@ -14,12 +20,8 @@ This creates shop/team, vendor, purchase, expense, invitation and audit tables, 
 
 After running the SQL, check the Supabase Security Advisor and resolve any warnings before entering real shop data.
 
-## 3. Configure the browser client
-Open `config.js` and set:
-- `supabaseUrl`: Project URL from Supabase → Project Settings → API.
-- `supabasePublishableKey`: publishable key from the same project.
-
-Only use the publishable key in this file. Never put a `service_role` key or secret key in browser code.
+## 3. Browser client
+`config.js` is already configured for the new dedicated project with its URL and publishable key. The publishable key is intended for browser use; database row-level security is what protects records. Never put a `service_role` key or secret key in browser code.
 
 ## 4. Authentication and first owner
 Enable Email authentication in Supabase Auth. For testing, configure email confirmation and SMTP settings to match your intended workflow.
