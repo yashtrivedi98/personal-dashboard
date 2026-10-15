@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "General Store Manager",
+  "short_name": "Store Manager",
+  "description": "Daily purchases, vendor balances and shop expenses",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#174b3b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
