@@ -134,7 +134,7 @@ alter table public.expenses enable row level security;
 alter table public.audit_log enable row level security;
 
 create policy shops_read_members on public.shops for select to authenticated
-using (private.has_shop_role(id,array['owner','family','employee']));
+using (created_by = (select auth.uid()) or private.has_shop_role(id,array['owner','family','employee']));
 create policy shops_create_owner on public.shops for insert to authenticated
 with check (created_by = (select auth.uid()));
 create policy shops_update_owner on public.shops for update to authenticated
