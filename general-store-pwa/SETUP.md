@@ -6,8 +6,9 @@ This folder is a separate app within the repository. It must use a **dedicated S
 Create a new project in the Supabase organization you choose. Use the closest suitable region for your users (India region if available). Keep the database password private.
 
 ## 2. Apply the database schema
-In the new project's SQL Editor, run the complete SQL file:
-`supabase/migrations/001_general_store_schema.sql`
+In the new project's SQL Editor, run both SQL files in order:
+1. `supabase/migrations/001_general_store_schema.sql`
+2. `supabase/migrations/002_vendor_payments.sql`
 
 This creates shop/team, vendor, purchase, expense, invitation and audit tables, enables row-level security, and adds policies. Employees can create pending purchase/expense entries and only read their own submissions. Owner/family members can review records; only owners can manage roles and delete financial records.
 
