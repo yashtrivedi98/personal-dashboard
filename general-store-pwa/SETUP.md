@@ -9,7 +9,7 @@ This folder is a separate app within the repository. It must use a **dedicated S
 - Project fee quoted by Supabase at creation: `$0/month`
 - Project URL: `https://yltwspgvgjakcuxnkgdp.supabase.co`
 
-All four schema migrations have been applied successfully. The third migration restricts family-role invitations so only the owner can invite another owner, and adds indexes for common lookups. Keep the database password private. The browser config uses only the project's publishable key; never put a `service_role` key or secret key in browser code.
+All five schema migrations have been applied successfully. The third migration restricts family-role invitations so only the owner can invite another owner, and adds indexes for common lookups. Keep the database password private. The browser config uses only the project's publishable key; never put a `service_role` key or secret key in browser code.
 
 ## 2. Apply the database schema
 In the new project's SQL Editor, run both SQL files in order:
@@ -17,10 +17,11 @@ In the new project's SQL Editor, run both SQL files in order:
 2. `supabase/migrations/002_vendor_payments.sql`
 3. `supabase/migrations/003_security_performance_hardening.sql`
 4. `supabase/migrations/004_rls_policy_cleanup.sql`
+5. `supabase/migrations/005_invite_claim_rls.sql`
 
 This creates shop/team, vendor, purchase, expense, invitation and audit tables, enables row-level security, and adds policies. Employees can create pending purchase/expense entries and only read their own submissions. Owner/family members can review records; only owners can manage roles and delete financial records.
 
-The third and fourth migrations are already applied to the dedicated project. The fourth migration consolidates overlapping access policies without changing intended role permissions. The invitation role escalation path is restricted. A Supabase advisor warning remains for the email-matching invitation-claim function; it is intentionally callable by authenticated users and only claims pending invites for their own verified account email, but it should still be reviewed before real shop data is entered.
+The third, fourth and fifth migrations are already applied to the dedicated project. The fourth migration consolidates overlapping access policies without changing intended role permissions. The fifth migration moves invitation claiming to invoker permissions and restricts invitation updates to the status column. The Supabase Security Advisor currently reports no security lints.
 
 ## 3. Browser client
 `config.js` is already configured for the new dedicated project with its URL and publishable key. The publishable key is intended for browser use; database row-level security is what protects records. Never put a `service_role` key or secret key in browser code.
@@ -33,7 +34,7 @@ Enable Email authentication in Supabase Auth. For testing, configure email confi
 4. Under Team, create invitations for family and employees. This screen records the invitation; it does not send email. Invitees must create/sign in to Supabase Auth with the exact invited email to claim their membership. You must deliver the sign-up link to them separately.
 
 ## 5. Deploy
-The repository currently uses GitHub Pages for the root app. Once this branch is reviewed and merged, the app folder should be available at:
+The repository currently uses GitHub Pages for the root app. After the app is published through GitHub Pages, the app folder should be available at:
 `https://yashtrivedi98.github.io/personal-dashboard/general-store-pwa/`
 
 Serve over HTTPS for installation and service-worker support. Open the URL in Chrome/Edge and choose **Install app** or **Add to Home Screen**.
