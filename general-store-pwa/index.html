@@ -13,13 +13,13 @@
 </head>
 <body>
 <section id="authScreen" class="auth">
- <div class="logo"><img src="./icon.svg" alt="General Store storefront logo" width="50" height="50"></div><h1>General Store Manager</h1><p class="muted">Your shop notebook, organized and always with you.</p>
+ <div class="logo"><img src="./icon.svg?v=4" alt="General Store storefront logo" width="50" height="50"></div><h1>General Store Manager</h1><p class="muted">Your shop notebook, organized and always with you.</p>
  <div id="configWarning" class="notice warn hidden">Setup required: connect this app to its dedicated Supabase project. Follow SETUP.md in the project folder.</div>
  <form id="authForm"><label>Email address</label><input id="email" type="email" autocomplete="username" required placeholder="you@example.com"><label>Password</label><input id="password" type="password" minlength="8" autocomplete="current-password" required placeholder="At least 8 characters"><div class="form-actions"><button id="signInBtn" type="submit">Sign in</button><button id="signUpBtn" type="button" class="secondary">Create account</button></div></form>
  <p id="authMsg" class="muted" style="margin:14px 0 0;font-size:12px"></p>
 </section>
 <div id="appScreen" class="wrap hidden">
- <header class="top"><div class="brand"><div class="logo">▣</div><div><h1>General Store Manager</h1><small id="hello">Shop operations at a glance</small></div></div><div class="top-right"><span id="netStatus" class="offline"><span class="dot"></span>Online</span><button id="installBtn" class="secondary install">Install app</button><select id="shopSelect" aria-label="Current shop"></select><span id="roleBadge" class="role"></span><button id="signOutBtn" class="secondary">Sign out</button></div></header>
+ <header class="top"><div class="brand"><div class="logo"><img src="./icon.svg?v=4" alt="General Store storefront logo" width="50" height="50"></div><div><h1>General Store Manager</h1><small id="hello">Shop operations at a glance</small></div></div><div class="top-right"><span id="netStatus" class="offline"><span class="dot"></span>Online</span><button id="installBtn" class="secondary install">Install app</button><select id="shopSelect" aria-label="Current shop"></select><span id="roleBadge" class="role"></span><button id="signOutBtn" class="secondary">Sign out</button></div></header>
  <div id="globalMsg" class="notice hidden" role="status"></div><nav id="nav" class="nav"></nav><main id="view"></main><footer class="footer">General Store Manager · Private to your shop team · ₹ INR</footer>
 </div>
 <script src="./config.js"></script>
