@@ -163,8 +163,8 @@ create policy vendors_write_family on public.vendors for all to authenticated
 using (private.has_shop_role(shop_id,array['owner','family']))
 with check (private.has_shop_role(shop_id,array['owner','family']));
 
-create policy purchases_read_team on public.purchases for select to authenticated
-using (private.has_shop_role(shop_id,array['owner','family','employee']));
+create policy purchases_read_managers_and_own on public.purchases for select to authenticated
+using (private.has_shop_role(shop_id,array['owner','family']) or (private.has_shop_role(shop_id,array['employee']) and submitted_by=(select auth.uid())));
 create policy purchases_insert_owner_family on public.purchases for insert to authenticated
 with check (private.has_shop_role(shop_id,array['owner','family']) and submitted_by=(select auth.uid()));
 create policy purchases_insert_employee_pending on public.purchases for insert to authenticated
@@ -175,8 +175,8 @@ with check (private.has_shop_role(shop_id,array['owner','family']));
 create policy purchases_delete_owner on public.purchases for delete to authenticated
 using (private.has_shop_role(shop_id,array['owner']));
 
-create policy expenses_read_team on public.expenses for select to authenticated
-using (private.has_shop_role(shop_id,array['owner','family','employee']));
+create policy expenses_read_managers_and_own on public.expenses for select to authenticated
+using (private.has_shop_role(shop_id,array['owner','family']) or (private.has_shop_role(shop_id,array['employee']) and submitted_by=(select auth.uid())));
 create policy expenses_insert_owner_family on public.expenses for insert to authenticated
 with check (private.has_shop_role(shop_id,array['owner','family']) and submitted_by=(select auth.uid()));
 create policy expenses_insert_employee_pending on public.expenses for insert to authenticated
