@@ -1,6 +1,6 @@
 {
   "id": "./",
-  "name": "General Store Manager",
+  "name": "Store Manager",
   "short_name": "Store Manager",
   "description": "Daily purchases, vendor balances and shop expenses",
   "start_url": "./index.html",
