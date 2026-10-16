@@ -137,6 +137,26 @@ input:focus,select:focus,textarea:focus{border-color:#b8aaf4;box-shadow:0 0 0 3p
 .card h2{letter-spacing:-.02em}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* Visible but restrained motion: dashboard entrance, staggered cards, and chart reveal */
+@keyframes dashboardRiseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dashboardValueIn{0%{opacity:.35;transform:translateY(7px);filter:blur(2px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes dashboardBarGrow{from{transform:scaleY(.08);opacity:.45}to{transform:scaleY(1);opacity:1}}
+@keyframes dashboardSoftGlow{0%,100%{box-shadow:0 6px 18px rgba(58,43,96,.055)}50%{box-shadow:0 10px 25px rgba(115,91,190,.13)}}
+#home> .row:first-child{animation:dashboardRiseIn .5s cubic-bezier(.2,.75,.25,1) both}
+#home>.grid>.card{animation:dashboardRiseIn .55s cubic-bezier(.2,.75,.25,1) both;transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease}
+#home>.grid>.card:nth-child(1){animation-delay:.04s}
+#home>.grid>.card:nth-child(2){animation-delay:.11s}
+#home>.grid>.card:nth-child(3){animation-delay:.18s}
+#home>.grid>.card:nth-child(4){animation-delay:.25s}
+#home>.grid>.card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(72,52,115,.12);border-color:#ded5fa}
+#home>.grid>.card .stat{animation:dashboardValueIn .48s ease-out both;animation-delay:.2s}
+#home>.budget-snapshot{animation:dashboardRiseIn .58s cubic-bezier(.2,.75,.25,1) .18s both}
+#home>.layout>.card{animation:dashboardRiseIn .6s cubic-bezier(.2,.75,.25,1) .25s both}
+#home .bar span{transform-origin:left center;animation:dashboardBarGrow .75s cubic-bezier(.2,.75,.25,1) both}
+#home .budget-report-bar span{transition:width .7s cubic-bezier(.2,.75,.25,1)}
+@media(hover:hover){.card:not(#home .grid .card):hover{transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){#home> .row:first-child,#home>.grid>.card,#home>.grid>.card .stat,#home>.budget-snapshot,#home>.layout>.card,#home .bar span{animation:none!important}#home>.grid>.card:hover,.card:hover,button:hover{transform:none!important}}
 </style></head><body>
 <div id="auth" class="card auth"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small>Your money, together</small></div></div><div id="setup" class="notice hidden" style="margin-top:20px">Setup is not finished yet. Add your Supabase project URL and publishable/anon key in <b>config.js</b>.</div><div id="authForm"><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"><label>Password</label><input id="password" type="password" autocomplete="current-password"><div class="actions" style="margin-top:15px"><button id="login">Sign in</button><button id="signup" class="alt">Create account</button></div><p id="authMsg" class="muted" style="margin-top:12px"></p></div></div>
 <div id="app" class="app hidden"><header class="top"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small id="welcome">Shared finance dashboard</small></div></div><div class="actions"><select id="profile" aria-label="Profile"></select><button id="newExpense">+ Expense</button><button id="accountMenu" class="alt" aria-expanded="false" aria-controls="accountDropdown" title="Account options" style="min-width:46px;padding:11px 14px">⋯</button><div id="accountDropdown" class="account-dropdown hidden"><button id="editProfile" class="menu-action" type="button">Edit profile</button><button id="logout" class="menu-action signout-action" type="button">Sign out</button></div></div></header><div id="notice" class="notice hidden"></div>
