@@ -369,6 +369,38 @@ input:focus,select:focus,textarea:focus{border-color:#9685f2;box-shadow:0 0 0 4p
 }
 @media(max-width:700px){.card h2:after{width:32px}.tablewrap{border-radius:12px}}
 @media(prefers-reduced-motion:reduce){.card,.goal-card,.wish-showcase{transition:none!important}}
+
+/* Final compact wishlist showcase sizing: override legacy inline dimensions */
+#wishlist .wish-showcase{grid-template-columns:96px minmax(160px,1fr) minmax(190px,.75fr)!important;column-gap:14px!important;row-gap:9px!important;padding:12px!important;border-radius:16px!important}
+#wishlist .wish-showcase-visual{width:96px!important;height:96px!important;min-height:96px!important;max-height:96px!important;border-radius:12px!important;font-size:38px!important}
+#wishlist .wish-showcase-info{min-width:0!important}
+#wishlist .wish-showcase-name{font-size:18px!important;line-height:1.2!important}
+#wishlist .wish-showcase-category{margin-top:4px!important;font-size:12px!important}
+#wishlist .wish-showcase-badges{gap:6px!important;margin-top:7px!important}
+#wishlist .wish-showcase-badge{padding:5px 8px!important;font-size:10px!important}
+#wishlist .wish-showcase-price{padding:3px 0 3px 12px!important}
+#wishlist .wish-showcase-price>div:first-child{font-size:11px!important}
+#wishlist .wish-showcase-price>div:nth-child(2){font-size:20px!important;margin:5px 0 7px!important}
+#wishlist .wish-showcase-price>div:nth-child(3){height:6px!important}
+#wishlist .wish-showcase-price>div:last-child{margin-top:6px!important;font-size:10px!important}
+#wishlist .wish-showcase-footer{grid-template-columns:minmax(130px,1fr) 88px 88px!important;gap:7px!important}
+#wishlist .wish-showcase-footer button,#wishlist .wish-showcase-purchased{min-height:34px!important;height:34px!important;padding:5px 8px!important;border-radius:9px!important;font-size:10px!important}
+@media(max-width:850px){
+ #wishlist .wish-showcase{grid-template-columns:72px minmax(0,1fr)!important;gap:9px!important;padding:10px!important}
+ #wishlist .wish-showcase-visual{width:72px!important;height:72px!important;min-height:72px!important;max-height:72px!important;font-size:30px!important}
+ #wishlist .wish-showcase-price{grid-column:1/-1!important;grid-row:2!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid #e8e2f4!important}
+ #wishlist .wish-showcase-footer{grid-column:1/-1!important;grid-template-columns:minmax(0,1fr) 1fr 1fr!important}
+ #wishlist .wish-showcase-purchase{grid-column:auto!important}
+}
+@media(max-width:520px){
+ #wishlist .wish-showcase{grid-template-columns:1fr!important;padding:10px!important}
+ #wishlist .wish-showcase-visual{width:64px!important;height:64px!important;min-height:64px!important;max-height:64px!important}
+ #wishlist .wish-showcase-info{grid-column:1!important;grid-row:2!important}
+ #wishlist .wish-showcase-price{grid-column:1!important;grid-row:3!important}
+ #wishlist .wish-showcase-footer{grid-column:1!important;grid-template-columns:1fr 1fr!important}
+ #wishlist .wish-showcase-purchase{grid-column:1/-1!important}
+}
+
 </style></head><body>
 <div id="auth" class="card auth"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small>Your money, together</small></div></div><div id="setup" class="notice hidden" style="margin-top:20px">Setup is not finished yet. Add your Supabase project URL and publishable/anon key in <b>config.js</b>.</div><div id="authForm"><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"><label>Password</label><input id="password" type="password" autocomplete="current-password"><div class="actions" style="margin-top:15px"><button id="login">Sign in</button><button id="signup" class="alt">Create account</button></div><p id="authMsg" class="muted" style="margin-top:12px"></p></div></div>
 <div id="app" class="app hidden"><header class="top"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small id="welcome">Shared finance dashboard</small></div></div><div class="actions"><select id="profile" aria-label="Profile"></select><button id="newExpense">+ Expense</button><button id="accountMenu" class="alt" aria-expanded="false" aria-controls="accountDropdown" title="Account options" style="min-width:46px;padding:11px 14px">⋯</button><div id="accountDropdown" class="account-dropdown hidden"><button id="editProfile" class="menu-action" type="button">Edit profile</button><button id="logout" class="menu-action signout-action" type="button">Sign out</button></div></div></header><div id="notice" class="notice hidden"></div>
