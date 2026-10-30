@@ -633,7 +633,7 @@ $('wishForm').onsubmit=saveWish;$('addWishlist').onclick=()=>openWish();$('wishC
   const statusLabel={want_to_buy:'Want to buy',saving:'Saving',purchased:'Purchased',on_hold:'On hold'}[x.status]||x.status;
   const priorityLabel={high:'High',medium:'Medium',low:'Low'}[x.priority]||x.priority;
   const price=Number(x.target_price||0),saved=Number(x.amount_saved||0),pct=price>0?Math.min(100,saved/price*100):0;
-  const link=x.product_url&&/^https?:\\/\\//i.test(x.product_url)?'<a href="'+esc(x.product_url)+'" target="_blank" rel="noopener noreferrer">Open product ↗</a>':'';
+  const link=x.product_url&&(x.product_url.startsWith('http://')||x.product_url.startsWith('https://'))?'<a href="'+esc(x.product_url)+'" target="_blank" rel="noopener noreferrer">Open product ↗</a>':'';
   const visual={Electronics:'📱',Home:'🏠',Fashion:'👜',Beauty:'✨',Books:'📚',Travel:'✈️',Other:'♡'}[x.category]||'♡';
   return '<article class="wish-showcase"><div class="wish-showcase-visual"><span>'+visual+'</span></div>'+
    '<div class="wish-showcase-info"><div class="wish-showcase-name">'+esc(x.item_name)+'</div><div class="wish-showcase-category">'+esc(x.category)+'</div><div class="wish-showcase-badges"><span class="wish-showcase-badge">'+statusLabel+'</span><span class="wish-showcase-badge priority">🔥 '+priorityLabel+' priority</span></div>'+
