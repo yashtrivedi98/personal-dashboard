@@ -9,6 +9,7 @@ A responsive shared finance dashboard using Supabase Auth and Postgres.
 - Monthly overview and category breakdown
 - Monthly category budgets
 - Savings goals
+- Wishlist with price tracking, savings progress, priorities, and purchase-to-expense conversion
 - CSV export
 
 ## Configure Supabase
