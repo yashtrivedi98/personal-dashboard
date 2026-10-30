@@ -202,6 +202,44 @@ input:focus,select:focus,textarea:focus{border-color:#b8aaf4;box-shadow:0 0 0 3p
 #expenses .expense-subnav button[data-expenseview]{margin:0!important}
 
 .daily-symptoms input{accent-color:#bd719b}#periodDetailsModal .tablewrap,#dailyLogModal .tablewrap{max-width:100%}@media(max-width:680px){#periodDetailsModal,#dailyLogModal{top:2vh!important;max-height:96vh!important;padding:16px!important}#dailyLogModal .formgrid{grid-template-columns:1fr}#periodDetailsModal .row{align-items:flex-start;flex-wrap:wrap}}
+
+/* Wishlist cards: keep this module visually independent from savings goals. */
+#wishlist .wishlist-panel{padding:22px}
+#wishlist .wishlist-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+#wishlist .wishlist-toolbar h2{margin:0;font-size:18px}
+#wishlist .wishlist-filters{display:flex;gap:9px;flex-wrap:wrap}
+#wishlist .wishlist-filters select{width:auto;min-width:145px;padding:10px 34px 10px 12px;background:#fff;border-color:#e9e4e0;font-size:13px}
+#wishlist #wishList{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(min(100%,285px),1fr));gap:15px;margin-top:18px}
+#wishlist .wishlist-card{display:flex;flex-direction:column;gap:16px;min-width:0;padding:19px;border:1px solid #ece7ef;border-radius:19px;background:linear-gradient(155deg,#fff 0%,#fdfbff 100%);box-shadow:0 5px 18px rgba(42,35,61,.045);transition:transform .18s,box-shadow .18s,border-color .18s}
+#wishlist .wishlist-card:hover{transform:translateY(-2px);border-color:#ddd5f2;box-shadow:0 10px 25px rgba(42,35,61,.08)}
+#wishlist .wishlist-card-top{display:flex;align-items:flex-start;gap:12px;min-width:0}
+#wishlist .wishlist-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:14px;background:#f1edff;color:#705bd0;font-size:20px}
+#wishlist .wishlist-heading{flex:1;min-width:0}
+#wishlist .wishlist-name{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;line-height:1.35;overflow-wrap:anywhere;color:#29243c}
+#wishlist .wishlist-subtitle{margin-top:4px;color:#898696;font-size:12px}
+#wishlist .wishlist-badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+#wishlist .wishlist-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#f2efff;color:#705bc4;font-size:11px;font-weight:800}
+#wishlist .wishlist-badge.status-purchased{background:#e7f6ee;color:#21815d}
+#wishlist .wishlist-badge.status-saving{background:#fff2df;color:#a66c22}
+#wishlist .wishlist-badge.status-on_hold{background:#f1eff2;color:#777080}
+#wishlist .wishlist-badge.priority-high{background:#fff0f1;color:#c65366}
+#wishlist .wishlist-pricebox{padding:13px 14px;border:1px solid #eeeaf3;border-radius:14px;background:#fff}
+#wishlist .wishlist-price-row{display:flex;justify-content:space-between;gap:10px;color:#898696;font-size:12px;flex-wrap:wrap}
+#wishlist .wishlist-price{margin:5px 0 10px;font-family:'Manrope',sans-serif;font-size:23px;line-height:1.25;font-weight:800;letter-spacing:-.6px;color:#2c2740;overflow-wrap:anywhere}
+#wishlist .wishlist-progress{height:7px;background:#efedf3;border-radius:99px;overflow:hidden}
+#wishlist .wishlist-progress span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7967df,#b69bea)}
+#wishlist .wishlist-progress-labels{display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:#898696;font-size:11px;flex-wrap:wrap}
+#wishlist .wishlist-extra{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;min-height:18px;color:#898696;font-size:12px}
+#wishlist .wishlist-extra a{color:#6b58cb;font-weight:700;text-decoration:none}
+#wishlist .wishlist-extra a:hover{text-decoration:underline}
+#wishlist .wishlist-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+#wishlist .wishlist-actions button{flex:1 1 auto;min-width:75px;padding:9px 11px;font-size:12px}
+#wishlist .wishlist-actions .purchase-button{flex:1 1 100%;background:#e9f6ef;color:#21815d;box-shadow:none}
+#wishlist .wishlist-actions .purchase-button:hover{background:#d9f0e4}
+#wishlist .wishlist-purchased-note{color:#21815d;font-size:12px;font-weight:700}
+#wishlist .wishlist-empty{padding:34px 18px;margin-top:18px;border:1px dashed #ded7e8;border-radius:16px;background:#fbfaff;color:#898096;text-align:center}
+@media(max-width:680px){#wishlist .wishlist-panel{padding:15px}#wishlist .wishlist-toolbar{align-items:flex-start}#wishlist .wishlist-filters{width:100%}#wishlist .wishlist-filters select{flex:1;min-width:0}#wishlist #wishList{grid-template-columns:minmax(0,1fr)}#wishlist .wishlist-card{padding:16px}}
+
 </style></head><body>
 <div id="auth" class="card auth"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small>Your money, together</small></div></div><div id="setup" class="notice hidden" style="margin-top:20px">Setup is not finished yet. Add your Supabase project URL and publishable/anon key in <b>config.js</b>.</div><div id="authForm"><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="you@example.com"><label>Password</label><input id="password" type="password" autocomplete="current-password"><div class="actions" style="margin-top:15px"><button id="login">Sign in</button><button id="signup" class="alt">Create account</button></div><p id="authMsg" class="muted" style="margin-top:12px"></p></div></div>
 <div id="app" class="app hidden"><header class="top"><div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18"/><path d="M16 14h2"/><path d="M7 6V4.8A1.8 1.8 0 0 1 9.2 3H19"/></svg></div><div><h1>Expense Manager</h1><small id="welcome">Shared finance dashboard</small></div></div><div class="actions"><select id="profile" aria-label="Profile"></select><button id="newExpense">+ Expense</button><button id="accountMenu" class="alt" aria-expanded="false" aria-controls="accountDropdown" title="Account options" style="min-width:46px;padding:11px 14px">⋯</button><div id="accountDropdown" class="account-dropdown hidden"><button id="editProfile" class="menu-action" type="button">Edit profile</button><button id="logout" class="menu-action signout-action" type="button">Sign out</button></div></div></header><div id="notice" class="notice hidden"></div>
@@ -344,11 +382,11 @@ $('wishForm').onsubmit=saveWish;$('addWishlist').onclick=()=>openWish();$('wishC
   const priorityLabel={high:'High',medium:'Medium',low:'Low'}[x.priority]||x.priority;
   const price=Number(x.target_price||0),saved=Number(x.amount_saved||0),pct=price>0?Math.min(100,saved/price*100):0;
   const link=x.product_url&&/^https?:\/\//i.test(x.product_url)?'<a href="'+esc(x.product_url)+'" target="_blank" rel="noopener noreferrer">Open product ↗</a>':'';
-  return '<article class="goal-card"><div class="goal-top"><div class="goal-icon">♡</div><div style="flex:1;min-width:0"><div class="goal-name">'+esc(x.item_name)+'</div><div class="muted">'+esc(x.category)+' · '+priorityLabel+' priority</div><span class="goal-status '+(x.status==='purchased'?'done':'')+'">'+statusLabel+'</span></div></div>'+
-   '<div><div class="goal-meta"><span>Target price</span><span>'+ (x.current_price!==null&&x.current_price!==undefined?'Current '+fmt(x.current_price):'')+'</span></div><div class="goal-target">'+fmt(price)+'</div><div class="goal-progress"><span style="width:'+pct+'%"></span></div><div class="goal-meta"><span>'+fmt(saved)+' saved</span><span>'+Math.max(0,100-pct).toFixed(0)+'% to go</span></div></div>'+
-   (x.description?'<div class="muted" style="font-size:12px;overflow-wrap:anywhere">'+esc(x.description)+'</div>':'')+
-   '<div class="goal-meta">'+(x.target_date?'Target '+esc(dateLabel(x.target_date)):'')+link+'</div><div class="goal-actions">'+
-   (x.status!=='purchased'?'<button type="button" data-wish-buy="'+esc(x.id)+'">Mark purchased</button>':'<span class="success">✓ Purchased '+(x.purchased_date?esc(dateLabel(x.purchased_date)):'')+'</span>')+
+  return '<article class="wishlist-card"><div class="wishlist-card-top"><div class="wishlist-icon">♡</div><div class="wishlist-heading"><div class="wishlist-name">'+esc(x.item_name)+'</div><div class="wishlist-subtitle">'+esc(x.category)+'</div><div class="wishlist-badges"><span class="wishlist-badge status-'+esc(x.status)+'">'+statusLabel+'</span><span class="wishlist-badge priority-'+esc(x.priority)+'">'+priorityLabel+' priority</span></div></div></div>'+
+   '<div class="wishlist-pricebox"><div class="wishlist-price-row"><span>Target price</span><span>'+(x.current_price!==null&&x.current_price!==undefined?'Current '+fmt(x.current_price):'')+'</span></div><div class="wishlist-price">'+fmt(price)+'</div><div class="wishlist-progress"><span style="width:'+pct+'%"></span></div><div class="wishlist-progress-labels"><span>'+fmt(saved)+' saved</span><span>'+Math.max(0,100-pct).toFixed(0)+'% to go</span></div></div>'+
+   (x.description?'<div class="wishlist-subtitle" style="overflow-wrap:anywhere">'+esc(x.description)+'</div>':'')+
+   '<div class="wishlist-extra"><span>'+(x.target_date?'Target '+esc(dateLabel(x.target_date)):'')+'</span>'+link+'</div><div class="wishlist-actions">'+
+   (x.status!=='purchased'?'<button type="button" class="purchase-button" data-wish-buy="'+esc(x.id)+'">✓ Mark as purchased</button>':'<span class="wishlist-purchased-note">✓ Purchased '+(x.purchased_date?esc(dateLabel(x.purchased_date)):'')+'</span>')+
    '<button type="button" class="alt" data-wish-edit="'+esc(x.id)+'">Edit</button><button type="button" class="danger" data-wish-del="'+esc(x.id)+'">Remove</button></div></article>'
  }).join('');
  show('wishEmpty',!rows.length);show('wishList',!!rows.length)
