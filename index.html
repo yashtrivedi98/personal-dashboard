@@ -219,8 +219,8 @@ input:focus,select:focus,textarea:focus{border-color:#b8aaf4;box-shadow:0 0 0 3p
  <div class="card"><div class="statlabel">Purchased</div><div id="wishPurchased" class="stat">0</div></div>
 </div>
 <div class="card" style="margin-top:16px">
- <div class="row" style="gap:12px;flex-wrap:wrap"><h2 style="margin:0">Your wishlist</h2><div class="actions"><select id="wishStatusFilter" style="width:auto"><option value="all">All statuses</option><option value="want_to_buy">Want to buy</option><option value="saving">Saving</option><option value="purchased">Purchased</option><option value="on_hold">On hold</option></select><select id="wishPriorityFilter" style="width:auto"><option value="all">All priorities</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div></div>
- <div id="wishList" class="goal-list" style="margin-top:15px"></div><div id="wishEmpty" class="empty hidden">Nothing here yet. Add your first wishlist item.</div>
+ <div class="row" style="gap:12px;flex-wrap:wrap"><h2 style="margin:0">Your wishlist</h2><div class="actions"><select id="wishStatusFilter" style="width:auto"><option value="all">All statuses</option><option value="want_to_buy">Want to buy</option><option value="saving">Saving</option><option value="on_hold">On hold</option></select><select id="wishPriorityFilter" style="width:auto"><option value="all">All priorities</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></div></div>
+ <div id="wishList" class="goal-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:15px"></div><div id="wishEmpty" class="empty hidden">Nothing here yet. Add your first wishlist item.</div>
 </div>
 </section>
 <div id="wishModal" class="card hidden" role="dialog" aria-modal="true" aria-labelledby="wishModalTitle" style="position:fixed;z-index:45;top:3vh;left:0;right:0;margin:auto;max-width:600px;width:calc(100% - 28px);max-height:94vh;overflow:auto;box-shadow:0 20px 80px #0003">
@@ -359,7 +359,7 @@ function openWish(item){
  $('wishName').value=item?.item_name||'';$('wishCategory').value=item?.category||'Other';
  $('wishPriority').value=item?.priority||'medium';$('wishTargetPrice').value=item?.target_price??0;
  $('wishCurrentPrice').value=item?.current_price??'';$('wishSavedAmount').value=item?.amount_saved??0;
- $('wishStatus').value=item?.status||'want_to_buy';$('wishTargetDate').value=item?.target_date||'';
+ if(item?.status==='purchased'&&!$('wishStatus').querySelector('option[value="purchased"]'))$('wishStatus').insertAdjacentHTML('beforeend','<option value="purchased">Purchased</option>');$('wishStatus').value=item?.status||'want_to_buy';$('wishTargetDate').value=item?.target_date||'';
  $('wishUrl').value=item?.product_url||'';$('wishDescription').value=item?.description||'';
  say('wishMsg','');show('wishModal',true)
 }
