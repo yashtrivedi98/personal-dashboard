@@ -371,7 +371,7 @@ async function saveWish(ev){
  const row={owner_id:user.id,profile_id:active.id,item_name:name,category:$('wishCategory').value,priority:$('wishPriority').value,status:$('wishStatus').value,target_price:target,current_price:current,amount_saved:saved,target_date:$('wishTargetDate').value||null,product_url:url||null,description:$('wishDescription').value.trim()||null,updated_at:new Date().toISOString()};
  $('wishSave').disabled=true;const result=id?await db.from('wishlist_items').update(row).eq('id',id).eq('owner_id',user.id).select().single():await db.from('wishlist_items').insert(row).select().single();$('wishSave').disabled=false;
  if(result.error)return say('wishMsg','Could not save item: '+result.error.message,'error');
- if(current!==null){const ph=await db.from('wishlist_price_history').insert({owner_id:user.id,wishlist_item_id:result.data.id,price:current,notes:'Price recorded while saving wishlist item'});if(ph.error)return say('wishMsg','Item saved, but price history could not be recorded: '+ph.error.message,'error')}
+ if(current!==null){const previous=id?wishlistItems.find(x=>x.id===id)?.current_price:null;if(current!==Number(previous)){const ph=await db.from('wishlist_price_history').insert({owner_id:user.id,wishlist_item_id:result.data.id,price:current,notes:'Price recorded while saving wishlist item'});if(ph.error)return say('wishMsg','Item saved, but price history could not be recorded: '+ph.error.message,'error')}}
  show('wishModal',false);notice(id?'Wishlist item updated.':'Added to wishlist.');await load()
 }
 function openWishPurchase(id){
