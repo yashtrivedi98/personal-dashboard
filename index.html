@@ -719,7 +719,6 @@ async function saveWish(ev){
 function openWishPurchase(id){
  const x=wishlistItems.find(v=>v.id===id);if(!x)return;$('wishPurchaseId').value=id;
  $('wishActualPrice').value=x.current_price??x.target_price??'';$('wishPurchaseDate').value=today();
- $('wishExpenseCategory').value=['Electronics','Fashion','Home','Health','Travel','Books','Gifts','Other'].includes(x.category)?x.category:'Shopping';
  say('wishPurchaseMsg','');show('wishPurchaseModal',true)
 }
 async function buyWish(ev){
