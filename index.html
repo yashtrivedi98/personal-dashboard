@@ -493,11 +493,11 @@ input:focus,select:focus,textarea:focus{border-color:#9685f2;box-shadow:0 0 0 4p
 @media(max-width:760px){#wishlist .wish-showcase{grid-template-columns:76px minmax(0,1fr)!important;gap:9px!important;padding:10px!important}#wishlist .wish-showcase-visual{width:76px!important;height:76px!important;min-height:76px!important;max-height:76px!important;font-size:29px!important}#wishlist .wish-showcase-info{grid-column:2!important;grid-row:1!important}#wishlist .wish-showcase-price{grid-column:1/-1!important;grid-row:2!important;padding:8px 0 0!important;border-left:0!important;border-top:1px solid #e8e2f4!important}#wishlist .wish-showcase-footer{grid-column:1/-1!important;grid-row:3!important;grid-template-columns:minmax(0,1fr) 1fr 1fr!important}}
 @media(max-width:480px){#wishlist .wish-showcase{grid-template-columns:1fr!important;padding:10px!important}#wishlist .wish-showcase-visual{grid-column:1!important;grid-row:1!important;width:64px!important;height:64px!important;min-height:64px!important;max-height:64px!important}#wishlist .wish-showcase-info{grid-column:1!important;grid-row:2!important}#wishlist .wish-showcase-price{grid-column:1!important;grid-row:3!important}#wishlist .wish-showcase-footer{grid-column:1!important;grid-row:4!important;grid-template-columns:1fr 1fr!important}#wishlist .wish-showcase-footer .wish-buy-button{grid-column:1/-1!important}}
 
-/* Restore the original neutral navigation tab palette without changing other buttons. */
-.tabs{background:#eeece8!important;border:1px solid #e8e4df!important;box-shadow:none!important;backdrop-filter:none!important}
-.tabs button,.tabs button:not(.alt):not(.danger){background:transparent!important;background-image:none!important;color:#777386!important;box-shadow:none!important;filter:none!important;transform:none!important}
-.tabs button:hover{background:#fffefa!important;background-image:none!important;color:var(--ink)!important;box-shadow:none!important;filter:none!important;transform:none!important}
-.tabs button.active,.tabs button.active:not(.alt):not(.danger){background:#fffefa!important;background-image:none!important;color:var(--brand)!important;box-shadow:0 3px 10px #30264b0d!important;filter:none!important;transform:none!important}
+/* Soft lavender navigation palette to complement the Wishlist showcase. */
+.tabs{background:radial-gradient(circle at 100% 0%,#eee8ff 0,transparent 32%),linear-gradient(115deg,#fff,#fdfbff 65%,#fff8fc)!important;border:1px solid #e9e2fb!important;box-shadow:0 7px 18px rgba(105,78,190,.055)!important;backdrop-filter:none!important}
+.tabs button,.tabs button:not(.alt):not(.danger){background:transparent!important;background-image:none!important;color:#68649a!important;box-shadow:none!important;filter:none!important;transform:none!important}
+.tabs button:hover{background:#f3efff!important;background-image:none!important;color:#6247e9!important;box-shadow:none!important;filter:none!important;transform:none!important}
+.tabs button.active,.tabs button.active:not(.alt):not(.danger){background:#fff!important;background-image:linear-gradient(115deg,#fff,#fdfbff)!important;color:#6247e9!important;box-shadow:0 3px 10px rgba(105,78,190,.10)!important;filter:none!important;transform:none!important}
 
 /* Improve contrast for both Expenses sub-navigation gradient pills. */
 #expenses .expense-subnav button[data-expenseview],
