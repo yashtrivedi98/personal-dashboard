@@ -303,6 +303,22 @@ input,select,textarea{border-color:#e4e5f2;background:rgba(255,255,255,.94)}
 input:focus,select:focus,textarea:focus{border-color:#9588f3;box-shadow:0 0 0 4px rgba(132,113,245,.13)}
 .auth{background:linear-gradient(145deg,#fff 0%,#faf9ff 65%,#f4f7ff 100%);box-shadow:0 24px 70px rgba(65,52,140,.14)}
 .auth:before{height:6px;background:var(--grad-primary)}
+/* Give every Monthly overview stat card the same hover lift and glow. */
+#home>.grid>.card{
+ transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+ border-color:#e4defe!important;
+ box-shadow:0 8px 24px rgba(73,62,156,.07)!important;
+}
+#home>.grid>.card:hover{
+ transform:translateY(-4px)!important;
+ border-color:#cfc4ff!important;
+ box-shadow:0 18px 38px rgba(73,62,156,.15)!important;
+}
+#home>.grid>.card:active{transform:translateY(-1px)!important}
+@media(prefers-reduced-motion:reduce){
+ #home>.grid>.card{transition:box-shadow .01ms,border-color .01ms!important}
+ #home>.grid>.card:hover{transform:none!important}
+}
 /* Soft gradient accents and restrained 3D lift for key dashboard panels */
 #home .card,#dashboard .card,.summary-card,.stat-card{background:linear-gradient(145deg,#fff 0%,#fbfaff 68%,#f4f6ff 100%)}
 #home .card:hover,#dashboard .card:hover,.summary-card:hover,.stat-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(73,62,156,.11)}
