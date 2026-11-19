@@ -923,6 +923,13 @@ function openModal(e){$('expenseForm').reset();$('editId').value=e?.id||'';$('mo
 // Bind the primary toolbar actions immediately, before the rest of the dashboard initializes.
 // This keeps core controls responsive even if a later module has a startup error.
 $('newExpense').onclick=$('newExpense2').onclick=()=>openModal();
+// Bind both expense-modal dismissal controls immediately. The close icon is inside
+// the form, so explicitly make it a non-submit button; both controls share one handler.
+function closeExpenseModal(ev){ev?.preventDefault();ev?.stopPropagation();show('modal',false)}
+$('close').type='button';
+$('close').onclick=closeExpenseModal;
+$('cancel').type='button';
+$('cancel').onclick=closeExpenseModal;
 $('accountMenu').onclick=()=>{const open=$('accountDropdown').classList.contains('hidden');show('accountDropdown',open);$('accountMenu').setAttribute('aria-expanded',String(open))};
 $('importExpenses').onclick=()=>$('expenseCsv').click();
 $('importImage').onclick=()=>{$('ocrReview').value='';say('ocrStatus','Choose a clear image of the expense table.');show('imageImportModal',true);$('expenseImage').click()};
