@@ -975,6 +975,8 @@ async function load(){
   const [pr,dl]=periodResults;
   if(pr.error||dl.error){periods=[];periodDailyLogs=[];notice('Muskan’s period records could not load: '+(pr.error||dl.error).message)}
   else{periods=(pr.data||[]).filter(x=>x.profile_id===profileId);periodDailyLogs=(dl.data||[]).filter(x=>x.profile_id===profileId)}
+  // Render period data as soon as it arrives, even if another dashboard query fails.
+  renderPeriods();
  }
  const err=results.find(x=>x.error);
  if(err){notice('Data could not load for '+(requestedProfile.display_name||'this profile')+': '+err.error.message);return}
