@@ -956,27 +956,30 @@ async function load(){
  emiLoans=[];emiPayments=[];emiInstallments=[];vratLogs=[];vratPlans=[];vratEntries=[];
  render();renderTrackers();
  const ownerId=user.id,profileId=requestedProfile.id;
+ // Resolve the profile-specific tracker immediately, independently of expenses,
+ // budgets, goals, or wishlist loading. This prevents unrelated errors from hiding it.
+ const isGirlfriend=['partner','girlfriend'].includes(String(requestedProfile.profile_key||'').toLowerCase())||/girlfriend|partner|muskan/i.test(String(requestedProfile.display_name||''));
+ show('periodTab',isGirlfriend);
+ if(!isGirlfriend){periods=[];periodDailyLogs=[]}
  const base=[db.from('expenses').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('expense_date',{ascending:false}),
  db.from('budgets').select('*').eq('owner_id',ownerId).eq('profile_id',profileId),
  db.from('savings_goals').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('created_at',{ascending:false}),
  db.from('wishlist_items').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('created_at',{ascending:false})];
- const results=await Promise.all(base);
+ const periodRequest=isGirlfriend?Promise.all([
+  db.from('period_logs').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('start_date',{ascending:false}),
+  db.from('period_daily_logs').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('log_date',{ascending:true})
+ ]):Promise.resolve(null);
+ const [results,periodResults]=await Promise.all([Promise.all(base),periodRequest]);
  if(version!==profileLoadVersion||$('profile').value!==profileId)return;
+ if(isGirlfriend){
+  const [pr,dl]=periodResults;
+  if(pr.error||dl.error){periods=[];periodDailyLogs=[];notice('Muskan’s period records could not load: '+(pr.error||dl.error).message)}
+  else{periods=(pr.data||[]).filter(x=>x.profile_id===profileId);periodDailyLogs=(dl.data||[]).filter(x=>x.profile_id===profileId)}
+ }
  const err=results.find(x=>x.error);
  if(err){notice('Data could not load for '+(requestedProfile.display_name||'this profile')+': '+err.error.message);return}
  expenses=(results[0].data||[]).filter(e=>e.profile_id===profileId&&!String(e.description||'').startsWith('Wishlist purchase:'));
  budgets=(results[1].data||[]).filter(x=>x.profile_id===profileId);goals=(results[2].data||[]).filter(x=>x.profile_id===profileId);wishlistItems=(results[3].data||[]).filter(x=>x.profile_id===profileId);
- const isGirlfriend=['partner','girlfriend'].includes(String(requestedProfile.profile_key||'').toLowerCase())||/girlfriend|partner/i.test(String(requestedProfile.display_name||''));
- show('periodTab',isGirlfriend);
- if(isGirlfriend){
-  const [pr,dl]=await Promise.all([
-   db.from('period_logs').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('start_date',{ascending:false}),
-   db.from('period_daily_logs').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('log_date',{ascending:true})
-  ]);
-  if(version!==profileLoadVersion||$('profile').value!==profileId)return;
-  if(pr.error||dl.error){notice('Muskan’s period records could not load: '+(pr.error||dl.error).message);return}
-  periods=(pr.data||[]).filter(x=>x.profile_id===profileId);periodDailyLogs=(dl.data||[]).filter(x=>x.profile_id===profileId);
- }else{periods=[];periodDailyLogs=[]}
  const [loans,installments,logs,plans,entries]=await Promise.all([
   db.from('emi_loans').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('created_at',{ascending:false}),
   db.from('emi_installments').select('*').eq('owner_id',ownerId).eq('profile_id',profileId).order('due_date',{ascending:true}),
